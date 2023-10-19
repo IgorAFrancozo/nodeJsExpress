@@ -21,7 +21,7 @@ class ProdutoController {
         }
     }
 
-    static async cadastrarProdutos(req, res) {
+    static async cadastrarProduto(req, res) {
         try {
             const novoProduto = await Produto.create(req.body);
             res.status(201).json({message: "Criado com sucesso", produto: novoProduto});
