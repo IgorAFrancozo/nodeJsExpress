@@ -15,7 +15,6 @@ routes.delete("/estabelecimentos/:id", estabelecimentoController.deletarEstabele
  *   name: Estabelecimentos
  *   description: Operações relacionadas a estabelecimentos
  */
-
 /**
  * @swagger
  * components:
@@ -25,14 +24,26 @@ routes.delete("/estabelecimentos/:id", estabelecimentoController.deletarEstabele
  *       properties:
  *         nome:
  *           type: string
- *         endereco:
- *           type: string
  *         telefone:
+ *           type: integer
+ *         horarioDeAtendimento:
+ *           type: string
+ *         cidade:
+ *           type: string
+ *         estado:
+ *           type: string
+ *         cnpj:
+ *           type: integer
+ *         logradouro:
  *           type: string
  *       required:
  *         - nome
- *         - endereco
  *         - telefone
+ *         - horarioDeAtendimento
+ *         - cidade
+ *         - estado
+ *         - cnpj
+ *         - logradouro
  */
 /**
  * @swagger
