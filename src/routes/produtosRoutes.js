@@ -32,12 +32,15 @@ routes.delete("/produtos/:id", ProdutoController.deletarProduto);
  *           type: number
  *         categoria:
  *           type: string
+ *         estabelecimento:
+ *           type: string
  *       required:
  *         - nome
  *         - descricao
  *         - marca
  *         - preco
  *         - categoria
+ *         - estabelecimento
  */
 /**
  * @swagger

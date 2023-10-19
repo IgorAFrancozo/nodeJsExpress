@@ -1,5 +1,5 @@
 import Produto from "../models/Produto.js";
-
+import {Estabelecimento} from "../models/Estabelecimento.js"
 class ProdutoController {
 
     static async listarProdutos(req, res) {
@@ -22,9 +22,12 @@ class ProdutoController {
     }
 
     static async cadastrarProduto(req, res) {
+        const novoProduto = req.body;
         try {
-            const novoProduto = await Produto.create(req.body);
-            res.status(201).json({message: "Criado com sucesso", produto: novoProduto});
+            const estabelecimentoEncontrado = await Estabelecimento.findById(novoProduto.estabelecimento);
+            const produtoCompleto = {...novoProduto, estabelecimento: {...estabelecimentoEncontrado._doc}}
+            const produtoCriado = await Produto.create(produtoCompleto)
+            res.status(201).json({message: "Criado com sucesso", produto: produtoCriado});
         } catch (erro) {
             res.status(500).json({message: `${erro.message} - Falha ao cadastrar produto`});
         }
@@ -40,7 +43,7 @@ class ProdutoController {
         }
     }
 
-    static async deletarProduto(req, res){
+    static async deletarProduto(req, res) {
         try {
             const id = req.params.id;
             await Produto.findByIdAndDelete(id);
